@@ -1,0 +1,106 @@
+{
+  "info": {
+    "name": "Bulk User Management System",
+    "description": "Complete Postman Collection for Bulk User Management APIs (Node.js + Express + MongoDB)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}",
+          "host": ["{{base_url}}"],
+          "path": []
+        }
+      }
+    },
+    {
+      "name": "Bulk Create Users",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"users\": [\n    {\n      \"name\": \"Rajesh Kumar\",\n      \"email\": \"rajesh.kumar@example.com\",\n      \"username\": \"rajesh001\",\n      \"age\": 28,\n      \"role\": \"user\",\n      \"isActive\": true\n    },\n    {\n      \"name\": \"Priya Sharma\",\n      \"email\": \"priya.sharma@example.com\",\n      \"username\": \"priya002\",\n      \"age\": 24,\n      \"role\": \"user\",\n      \"isActive\": true\n    },\n    {\n      \"name\": \"Amit Patel\",\n      \"email\": \"amit.patel@example.com\",\n      \"username\": \"amit003\",\n      \"age\": 32,\n      \"role\": \"admin\",\n      \"isActive\": true\n    },\n    {\n      \"name\": \"Sneha Gupta\",\n      \"email\": \"sneha.gupta@example.com\",\n      \"username\": \"sneha004\",\n      \"age\": 27,\n      \"role\": \"moderator\",\n      \"isActive\": true\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/bulk-create",
+          "host": ["{{base_url}}"],
+          "path": ["bulk-create"]
+        }
+      }
+    },
+    {
+      "name": "Bulk Update Users",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"updates\": [\n    {\n      \"filter\": { \"email\": \"rajesh.kumar@example.com\" },\n      \"update\": { \"age\": 29, \"isActive\": true }\n    },\n    {\n      \"filter\": { \"username\": \"priya002\" },\n      \"update\": { \"role\": \"moderator\", \"age\": 25 }\n    },\n    {\n      \"filter\": { \"email\": \"amit.patel@example.com\" },\n      \"update\": { \"name\": \"Amitkumar Patel\", \"isActive\": false }\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/bulk-update",
+          "host": ["{{base_url}}"],
+          "path": ["bulk-update"]
+        }
+      }
+    },
+    {
+      "name": "Export Users as JSON",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/export/json",
+          "host": ["{{base_url}}"],
+          "path": ["export", "json"]
+        }
+      }
+    },
+    {
+      "name": "Export Users as BSON",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/export/bson",
+          "host": ["{{base_url}}"],
+          "path": ["export", "bson"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api/users",
+      "type": "string"
+    }
+  ]
+}
